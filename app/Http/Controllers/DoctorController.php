@@ -52,7 +52,7 @@ class DoctorController extends Controller
             'ward'=> 'required',
             'province'=> 'required',
             'mobile'=> 'required',
-           
+
 
         ]);
 
@@ -73,6 +73,10 @@ class DoctorController extends Controller
         $doctor->ward = $request->ward;
         $doctor->province = $request->province;
         $doctor->mobile = $request->mobile;
+        $doctor->day1 = $request->day1;
+        $doctor->day2 = $request->day2;
+        $doctor->day3 = $request->day3;
+        $doctor->day4 = $request->day4;
         $doctor->lat = $request->lat;
         $doctor->lon = $request->lon;
         $doctor->description = $request->description;
@@ -141,8 +145,7 @@ class DoctorController extends Controller
             'ward'=> 'required',
             'province'=> 'required',
             'mobile'=> 'required',
-            'lat'=> 'required',
-            'lon'=> 'required',
+
             'description'=> 'required'
         ]);
 
@@ -163,6 +166,10 @@ class DoctorController extends Controller
         $doctor->ward = $request->ward;
         $doctor->province = $request->province;
         $doctor->mobile = $request->mobile;
+        $doctor->day1 = $request->day1;
+        $doctor->day2 = $request->day2;
+        $doctor->day3 = $request->day3;
+        $doctor->day4 = $request->day4;
         $doctor->lat = $request->lat;
         $doctor->lon = $request->lon;
         $doctor->description = $request->description;

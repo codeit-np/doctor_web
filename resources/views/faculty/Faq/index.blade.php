@@ -18,7 +18,7 @@
                     </div>
                     <div class="card-body">
                         <table class="table table-sm table-bordered table-striped" id="datatable">
-                            <thead>
+                            <thead class="thead-dark">
                                 <tr>
                                     <th>#</th>
                                     <th>Title</th>

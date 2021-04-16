@@ -49,6 +49,18 @@
                                         {{ $doctors->mobile }}
                                     </div>
                                     <div class="card-header">
+                                        {{ $doctors->day1 }}
+                                    </div>
+                                    <div class="card-header">
+                                        {{ $doctors->day2 }}
+                                    </div>
+                                    <div class="card-header">
+                                        {{ $doctors->day3 }}
+                                    </div>
+                                    <div class="card-header">
+                                        {{ $doctors->day4 }}
+                                    </div>
+                                    <div class="card-header">
                                         {{ $doctors->lat }}
                                     </div>
                                     <div class="card-header">

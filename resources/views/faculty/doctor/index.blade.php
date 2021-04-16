@@ -2,29 +2,34 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-20">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
                         <div class="card-header card-header-primary" >
-                            <h4 class="card-title">Hospital Management</h4>
+                            <h4 class="card-title">Doctor Management</h4>
                         </div>
                         <a href="/doctors/create" class="btn btn-primary btn-sm float-right"style="background-color: #030731 !important">Add Doctor</a>
                     </div>
                     <div class="card-body">
-                        <table class="table table-sm table-bordered table-striped" id="datatable">
-                            <thead>
+
+                        <table class="table table-sm table-bordered table-striped " id="datatable">
+                            <thead class="thead-dark">
                                 <tr>
                                     <th>#</th>
                                     <th>Doctor Name</th>
                                     <th>Specialist</th>
-                                    {{-- <th>Telephone</th> --}}
+                                    <th>Telephone</th>
                                     <th>Country</th>
                                     <th>Zone</th>
                                     <th>District</th>
                                     <th>City</th>
                                     <th>Ward</th>
                                     <th>Province</th>
-                                    {{-- <th>Mobile</th> --}}
+                                    <th>Mobile</th>
+                                    <th>Sun-Mon</th>
+                                    <th>Tue-Wed</th>
+                                    <th>Thu-Fri</th>
+                                    <th>Sat</th>
                                     <th>Latitude</th>
                                     <th>Longitude</th>
                                     <th>Description</th>
@@ -39,14 +44,18 @@
                                         <td>{{ $doctor->id }}</td>
                                         <td>{{ $doctor->name }}</td>
                                       <td> {{  $doctor->specialist->name }}</td>
-                                        {{-- <td>{{ $doctor->telephone }}</td> --}}
+                                        <td>{{ $doctor->telephone }}</td>
                                         <td>{{ $doctor->country }}</td>
                                         <td>{{ $doctor->zone }}</td>
                                         <td>{{ $doctor->district }}</td>
                                         <td>{{ $doctor->city }}</td>
                                         <td>{{ $doctor->ward }}</td>
                                         <td>{{ $doctor->province }}</td>
-                                        {{-- <td>{{ $doctor->mobile }}</td> --}}
+                                        <td>{{ $doctor->mobile }}</td>
+                                        <td>{{ $doctor->day1 }}</td>
+                                        <td>{{ $doctor->day2 }}</td>
+                                        <td>{{ $doctor->day3 }}</td>
+                                        <td>{{ $doctor->day4 }}</td>
                                         <td>{{ $doctor->lat }}</td>
                                         <td>{{ $doctor->lon }}</td>
                                         <td>{{ $doctor->description }}</td>

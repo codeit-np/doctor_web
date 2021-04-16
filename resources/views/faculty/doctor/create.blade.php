@@ -55,6 +55,22 @@
                                 <input id="name" class="form-control" type="text" name="mobile" placeholder="Mobile" >
                             </div>
                             <div class="form-group">
+                                <label for="name">Sun-Mon</label>
+                                <input id="name" class="form-control" type="text" name="day1" placeholder="Sun-Mon" >
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Tue-Wed</label>
+                                <input id="name" class="form-control" type="text" name="day2" placeholder="Tue-Wed" >
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Thu-Fri</label>
+                                <input id="name" class="form-control" type="text" name="day3" placeholder="Thu-Fri" >
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Sat</label>
+                                <input id="name" class="form-control" type="text" name="day4" placeholder="Sat" >
+                            </div>
+                            <div class="form-group">
                                 <label for="name">Latitude</label>
                                 <input id="name" class="form-control" type="text" name="lat" placeholder="Latitude" >
                             </div>

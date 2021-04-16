@@ -15,9 +15,9 @@
                       <a href="https://black-dashboard-pro-laravel.creative-tim.com/user/create" class="btn btn-sm btn-primary">Add user</a>
                     </div>
                   </div>
-                                <div class="table-responsive">
-                  <table id="datatables" class="table table-striped table-no-bordered table-hover" style="display:none">
-                    <thead class="text-primary">
+
+                    <table class="table table-sm table-bordered table-striped" id="datatable">
+                        <thead class="thead-dark">
                       <th>
                           Photo
                       </th>
@@ -114,6 +114,5 @@
             </div>
         </div>
       </div>
-    </div>
   </div>
 @endsection

@@ -21,7 +21,7 @@ class Favouriteresource extends JsonResource
             //'price' => $this->doctors->price,
             //'color' => $this->doctors->color,
             'image' => $this->doctors->image,
-            // 'image' => Config::get('constant.api.ip') . $this->image,
+           
             // 'price' => $this->price,
             // 'color' => $this->color,
 

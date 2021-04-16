@@ -58,6 +58,22 @@
                                 <input id="name" class="form-control" type="text" name="mobile" placeholder="Mobile" value="{{ $doctor->mobile }}">
                             </div>
                             <div class="form-group">
+                                <label for="name">Sun-Mon</label>
+                                <input id="name" class="form-control" type="text" name="day1" placeholder="Sun-Mon" value="{{ $doctor->day1 }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Tue-Wed</label>
+                                <input id="name" class="form-control" type="text" name="day2" placeholder="Tue-Wed" value="{{ $doctor->day2 }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Thu-Fri</label>
+                                <input id="name" class="form-control" type="text" name="day3" placeholder="Thu-Fri" value="{{ $doctor->day3 }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Sat</label>
+                                <input id="name" class="form-control" type="text" name="day4" placeholder="Sat" value="{{ $doctor->day4 }}">
+                            </div>
+                            <div class="form-group">
                                 <label for="name">Latitude</label>
                                 <input id="name" class="form-control" type="text" name="lat" placeholder="Latitude" value="{{ $doctor->lat }}">
                             </div>
