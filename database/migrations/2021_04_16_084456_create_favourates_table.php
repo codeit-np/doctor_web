@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDoctorImagesTable extends Migration
+class CreateFavouratesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateDoctorImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('doctor_images', function (Blueprint $table) {
+        Schema::create('favourates', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('user_id');
             $table->foreignId('doctor_id');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateDoctorImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doctor_images');
+        Schema::dropIfExists('favourates');
     }
 }

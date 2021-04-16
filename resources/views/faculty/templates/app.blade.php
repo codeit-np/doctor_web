@@ -194,6 +194,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
+            <a href="/specialists" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+               Specialist
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/doctors" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
@@ -242,14 +250,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="/specialists" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-               Specialist
-              </p>
-            </a>
-          </li>
+         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

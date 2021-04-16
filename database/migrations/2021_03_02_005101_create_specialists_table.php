@@ -16,7 +16,6 @@ class CreateSpecialistsTable extends Migration
         Schema::create('specialists', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
             $table->timestamps();
         });
     }

@@ -31,10 +31,6 @@ class Doctorresource extends JsonResource
             'mobile'=> $this->mobile,
             'description'=> $this->description,
 
-
-
-
-
         ];
     }
 }

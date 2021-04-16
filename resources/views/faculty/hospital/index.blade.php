@@ -54,14 +54,7 @@
 
 
                                         <td>
-                                            <span class="avatar avatar-lg rounded-circle">
-                                                <img class="avatar border-gray"
-                                                    src="{{ asset('uploadedFiles/' . $hospital->image) }}" alt="..."
-                                                    style="  vertical-align: middle;
-                                                    width: 70px;
-                                                    height: 70px;
-                                                    border-radius: 50%;">
-                                            </span>
+                                            <img src="{{ asset($hospital->image) }}" width="24" alt="">
                                         </td>
 
                                         <td>

@@ -14,10 +14,7 @@
                                 <label for="name">specialist Name</label>
                                 <input id="name" class="form-control" type="text" name="name" placeholder="specialist Name">
                             </div>
-                            <div class="form-group">
-                                <label for="image">Feature Image</label>
-                                <input type="file" class="form-control" name="image" accept="image/*">
-                              </div>
+                           
 
 
                             <button type="submit" class="btn btn-primary btn-sm float-right"  style="background-color: #030731 !important">Save</button>

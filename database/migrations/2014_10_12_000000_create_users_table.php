@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at');
             $table->string('profile_image')->nullable();
             $table->string('password');
+            $table->string('mobile')->nullable();
+            $table->string('city')->nullable();
             $table->integer('user_type')->default(1);/** 0 = patient,1= admin, 2 = doctor */
             $table->rememberToken();
             $table->timestamps();

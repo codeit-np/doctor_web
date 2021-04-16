@@ -63,10 +63,7 @@
                             </div>
 
 
-                            <div class="form-group">
-                                <label for="images">Other Images</label>
-                                <input id="images" class="form-control-file" type="file" name="images[]" multiple>
-                            </div>
+                            
                             <button type="submit" class="btn btn-primary btn-sm float-right" style="background-color: #030731 !important">Update</button>
 
                             @foreach ($hospitals->images as $image)

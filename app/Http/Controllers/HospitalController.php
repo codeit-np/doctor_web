@@ -57,7 +57,9 @@ class HospitalController extends Controller
             $file = $request->image;
             $newName = time() . $file->getClientOriginalName();
             $file->move('uploadedFiles', $newName);
-            $hospital->image =  $newName;
+            $hospital->image =  'uploadedFiles/' .$newName;
+        }else{
+            $hospital->image =  'images/hospital.jpg';
         }
         $hospital->telephone = $request->telephone;
         $hospital->country = $request->country;
@@ -141,7 +143,7 @@ class HospitalController extends Controller
             $file = $request->image;
             $newName = time() . $file->getClientOriginalName();
             $file->move('uploadedFiles', $newName);
-            $hospital->image =  $newName;
+            $hospital->image =  'uploadedFiles/' .$newName;
         }
 
 
@@ -157,16 +159,6 @@ class HospitalController extends Controller
         $hospital->update();
         // We need to save product first so that we can get product ID for Product Image Table
 
-        if($request->hasFile('images')){
-            foreach($request->images  as $image){
-                $hospitalImage = new HospitalImage();
-                $newName = time() . $image->getClientOriginalName();
-                $image->move('images',$newName);
-                $hospitalImage->name = 'images/' . $newName;
-                $hospitalImage->hospital_id = $hospital->id;
-                $hospitalImage->save();
-            }
-        }
 
 
 

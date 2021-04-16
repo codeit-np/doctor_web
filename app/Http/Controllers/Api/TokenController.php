@@ -30,6 +30,7 @@ class TokenController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->user_type = 0;
         $user->password = Hash::make($request->password);
         $user->save();
 
@@ -83,8 +84,37 @@ class TokenController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
-            'message'=>'Token Deleted',
+            'message'=>'success',
            
+        ],200);
+
+    }
+
+    public function update(Request $request)
+    {
+        $user = User::find($request->user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->user_type = 0;
+        $user->mobile = $request->mobile;
+        $user->city = $request->city;
+        $user->update();
+
+        return response()->json([
+            'message'=>'success',
+            
+        ],200);
+
+    }
+
+    public function changepassword(Request $request)
+    {
+        $user = User::find($request->user()->id);
+        $user->password =Hash::make($request->password);
+        $user->update();
+
+        return response()->json([
+            'message'=>'success',
         ],200);
 
     }

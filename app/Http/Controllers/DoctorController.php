@@ -53,7 +53,6 @@ class DoctorController extends Controller
             'province'=> 'required',
             'mobile'=> 'required',
 
-
         ]);
 
         $doctor = new Doctor();
@@ -62,7 +61,9 @@ class DoctorController extends Controller
             $file = $request->image;
             $newName = time() . $file->getClientOriginalName();
             $file->move('uploadedFiles', $newName);
-            $doctor->image =  $newName;
+            $doctor->image =  'uploadedFiles/' . $newName;
+        }else{
+            $doctor->image =  'images/profile.jpg';
         }
         $doctor->specialist_id = $request->specialist_id;
         $doctor->telephone = $request->telephone;
@@ -80,22 +81,11 @@ class DoctorController extends Controller
         $doctor->lat = $request->lat;
         $doctor->lon = $request->lon;
         $doctor->description = $request->description;
-
-
         $doctor->save();
-        if($request->hasFile('images')){
-            foreach($request->images  as $image){
-                $doctorImage = new DoctorImage();
-                $newName = time() . $image->getClientOriginalName();
-                $image->move('images',$newName);
-                $doctorImage->name = 'images/' . $newName;
-                $doctorImage->doctor_id = $doctor->id;
-                $doctorImage->save();
-            }
+        
+        $request->session()->flash('message','Record saved');
+        return redirect()->back();
 
-
-        return redirect()->back()->with('success','Doctor details successfully added.');
-   }
 }
 
 
@@ -155,7 +145,7 @@ class DoctorController extends Controller
             $file = $request->image;
             $newName = time() . $file->getClientOriginalName();
             $file->move('uploadedFiles', $newName);
-            $doctor->image =  $newName;
+            $doctor->image =  'uploadedFiles/' . $newName;
         }
         $doctor->specialist_id = $request->specialist_id;
         $doctor->telephone = $request->telephone;
@@ -179,16 +169,7 @@ class DoctorController extends Controller
         $doctor->update();
         // We need to save product first so that we can get product ID for Product Image Table
 
-        if($request->hasFile('images')){
-            foreach($request->images  as $image){
-                $doctorImage = new DoctorImage();
-                $newName = time() . $image->getClientOriginalName();
-                $image->move('images',$newName);
-                $doctorImage->name = 'images/' . $newName;
-                $doctorImage->doctor_id = $doctor->id;
-                $doctorImage->save();
-            }
-        }
+        
 
 
 

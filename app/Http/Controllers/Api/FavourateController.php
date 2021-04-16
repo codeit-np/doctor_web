@@ -1,23 +1,25 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Http\Resources\Favouriteresource;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\favourite;
 
-class favouriteController extends Controller
+use App\Http\Controllers\Controller;
+use App\Http\Resources\FavourateResource;
+use App\Models\Favourate;
+use Illuminate\Http\Request;
+
+use function PHPUnit\Framework\isEmpty;
+
+class FavourateController extends Controller
 {
-   /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $fav = favourite::all();
-        return Favouriteresource::collection($fav);
-        //return response()->json($fav);
+        $favourates = Favourate::all();
+        return FavourateResource::collection($favourates);
     }
 
     /**
@@ -28,12 +30,24 @@ class favouriteController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request->user()->id;
-        $fav = new Favourite();
-        $fav->product_id = $request->product_id;
-        $fav->user_id = $request->user()->id;
-        $fav->save();
-        return response()->json(['message' => 'success'], 200);
+        $result = Favourate::where('user_id',$request->user()->id)->where('doctor_id',$request->doctor_id)->count();
+        // return $result;
+
+        if(empty($result)){
+            $favourates = new Favourate();
+            $favourates->user_id = $request->user()->id;
+            $favourates->doctor_id = $request->doctor_id;
+            $favourates->save();
+            return response()->json(['message' => 'success']);
+           
+        }else{
+            $favourates = Favourate::where('user_id',$request->user()->id)->where('doctor_id',$request->doctor_id);
+            $favourates->delete();
+           return response()->json(['message' => 'deleted']);
+          
+
+        }
+        
     }
 
     /**
@@ -44,10 +58,7 @@ class favouriteController extends Controller
      */
     public function show($id)
     {
-        $userid =auth('sanctum')->user()->id;
-
-        $favdoctor = Favourite::where('doctor_id', $id)->where('user_id', $userid)->get();
-        return Favouriteresource::collection($favdoctor);
+        //
     }
 
     /**
@@ -70,9 +81,6 @@ class favouriteController extends Controller
      */
     public function destroy($id)
     {
-        $favdoctor = Favourite::find($id);
-        $favdoctor->delete();
-        return response()->json(['message' => 'deleted'], 200);
+        //
     }
 }
-

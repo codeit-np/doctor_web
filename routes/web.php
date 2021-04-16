@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\HospitalController;
-use App\Http\Controllers\MessageController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ProfileController;
@@ -37,9 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('hospitals',HospitalController::class);
 Route::resource('doctors',DoctorController::class);
-Route::resource('messages',MessageController::class);
 Route::resource('profile', ProfileController::class);
 Route::resource('faq', FaqController::class);
 Route::resource('specialists', SpecialistController::class);
-Route::resource('notifications',NotificationController::class);
 Route::get('notificationpush', [App\Http\Controllers\NotificationController::class, 'sendPush'])->name('sendPush');

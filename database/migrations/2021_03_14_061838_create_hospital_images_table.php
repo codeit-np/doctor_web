@@ -16,7 +16,7 @@ class CreateHospitalImagesTable extends Migration
         Schema::create('hospital_images', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('hospital_id')->constrained();
+            $table->foreignId('hospital_id');
             $table->timestamps();
         });
     }

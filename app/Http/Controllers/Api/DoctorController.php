@@ -19,7 +19,8 @@ class DoctorController extends Controller
     public function index()
     {
         $doctors = Doctor::all();
-        return Doctorresource::collection($doctors);
+        return response()->json($doctors);
+        // return Doctorresource::collection($doctors);
     }
 
     /**
@@ -41,7 +42,8 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        //
+        $doctor = Doctor::find($id);
+        return response()->json($doctor);
     }
 
     /**

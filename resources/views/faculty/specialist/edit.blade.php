@@ -15,19 +15,8 @@
                                 <label for="name">specialist Name</label>
                                 <input id="name" class="form-control" type="text" name="name" placeholder="Specialist Name" value="{{ $specialists->name }}">
                             </div>
-                            <div class="form-group">
-                                <label for="doctor_id">Select  Specialist</label>
-                                <select id="specialist_id" class="form-control" name="specialist_id">
-                                    @foreach ($specialists as $specialist)
-                                       <option value="{{ $specialist->id }}">{{ $specialist->name }}</option>
-                                   @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="image">Feature Image</label>
-                                <input type="file" class="form-control" name="image" accept="image/*">
-                            </div>
-
+                           
+                            
                             <button type="submit" class="btn btn-primary btn-sm float-right" style="background-color: #030731 !important">Update</button>
 
 

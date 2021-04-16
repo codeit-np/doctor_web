@@ -39,12 +39,6 @@ class SpecialistController extends Controller
     {
         $specialists = new Specialist();
         $specialists->name = $request->name;
-        if ($request->hasFile('image')){
-            $file = $request->image;
-            $newName = time() . $file->getClientOriginalName();
-            $file->move('uploadedFiles', $newName);
-            $specialists->image =  $newName;
-        }
 
      $specialists->save();
      return redirect()->back();
@@ -87,12 +81,6 @@ class SpecialistController extends Controller
         ]);
         $specialists = Specialist::find($id);
         $specialists->name = $request->name;
-        if ($request->hasFile('image')){
-            $file = $request->image;
-            $newName = time() . $file->getClientOriginalName();
-            $file->move('uploadedFiles', $newName);
-            $specialists->image =  $newName;
-        }
 
         $specialists->update();
         return redirect()->back();

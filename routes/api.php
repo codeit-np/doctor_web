@@ -1,12 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\DoctorController;
+use App\Http\Controllers\Api\FavourateController;
 use App\Http\Controllers\Api\SpecialistController;
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\favouriteController;
 use App\Http\Controllers\Api\HospitalController;
-use App\Http\Controllers\Api\HospitalImagesController;
-use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\TokenController;
 use Illuminate\Http\Request;
@@ -36,15 +33,15 @@ Route::post('login',[TokenController::class,'login']);
 Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::resource('hospitals', HospitalController::class);
     Route::resource('doctors', DoctorController::class);
-Route::resource('hospitalimage', HospitalImagesController::class);
-Route::resource('doctorimage', DoctorImagesController::class);
 Route::resource('specialists', SpecialistController::class);
 Route::get('searchHospital', [HospitalController::class, 'search']);
-Route::resource('favourite', favouriteController::class);
-Route::resource('notifications', NotificationController::class);
 Route::post('logout', [TokenController::class, 'logout']);
+Route::post('update', [TokenController::class, 'update']);
+Route::post('changepassword', [TokenController::class, 'changepassword']);
 
 Route::post('search',[SearchController::class,'search']);
+
+Route::resource('favourates',FavourateController::class);
 });
 
 
