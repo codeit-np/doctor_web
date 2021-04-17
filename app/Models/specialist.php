@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class specialist extends Model
 {
     use HasFactory;
-    public function doctors()
+    public function doctors()   
     {
         return $this->hasMany(Doctor::class);
     }
