@@ -19,6 +19,18 @@ class HospitalController extends Controller
         return response()->json($hospitals);
     }
 
+    public function nearest($id)
+    {
+        $hospitals = Hospital::find($id);
+        $maxlat = $hospitals->lat + 0.15;
+        $minlat = $hospitals->lat - 0.15;
+        $maxlong = $hospitals->lon + 0.15;
+        $minlong = $hospitals->lon - 0.15;
+
+        $query = Hospital::whereBetween('lat',[$minlat,$maxlat])->whereBetween('lon',[$minlong,$maxlong])->get();
+        return $query;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

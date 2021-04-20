@@ -42,6 +42,7 @@ Route::post('changepassword', [TokenController::class, 'changepassword']);
 Route::post('search',[SearchController::class,'search']);
 
 Route::resource('favourates',FavourateController::class);
+Route::get('nearest/{id}',[HospitalController::class,'nearest']);
 });
 
 
