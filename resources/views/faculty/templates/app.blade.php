@@ -26,6 +26,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   {{-- Data table --}}
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+  <style>
+   #mapid { height: 380px; }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -307,6 +315,95 @@ scratch. This page gets rid of all links and provides the needed markup only.
     $(document).ready(function(){
         $('#datatable').DataTable();
     });
+</script>
+
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+
+<script>
+  // Lat Long Divs 
+  const latDiv = document.getElementById('lat')
+  const lonDiv = document.getElementById('lng')
+  const locationbtn = document.getElementById('locationbtn');
+
+  // Map Instance
+  const mymap = L.map('mapid').setView([51.505, -0.09], 13);
+  //Map Setup
+  const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+  const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  const tiles = L.tileLayer(tileUrl, {
+      attribution
+  });
+  tiles.addTo(mymap);
+
+
+  //Marker To Show
+  let marker;
+
+  mymap.setView([latDiv.value || 26.8114, lonDiv.value || 87.2850], 15);
+
+  //If Lat And Long Are Given Show Marker
+  if (latDiv.value && lonDiv.value) {
+      marker = L.marker([latDiv.value, lonDiv.value]).addTo(mymap);
+  }
+
+  // Fetch Value Of Latitude And Longitude
+  function getLatLong() {
+      return [latDiv.value, lonDiv.value]
+  }
+
+  //When Location Button is Clicked the Lat and long is set as current location
+  locationbtn.addEventListener('click', e => {
+      setCurrentLocationAsLatLong()
+  })
+
+  mymap.on('click', (e) => {
+      lat = e.latlng.lat;
+      lng = e.latlng.lng;
+      latDiv.value = lat;
+      lonDiv.value = lng;
+      //If Marker Has Been Set Remove It
+      if (marker !== undefined) {
+          mymap.removeLayer(marker)
+      }
+      // Add Clicked Location To Marker
+      marker = L.marker([latDiv.value, lonDiv.value]).addTo(mymap);
+  })
+
+  //Set Current Location As LatLong
+  function setCurrentLocationAsLatLong() {
+      if ('geolocation' in navigator) {
+          navigator.geolocation.getCurrentPosition(
+              // On Success
+              ({
+                  coords: {
+                      latitude,
+                      longitude
+                  }
+              }) => {
+                  latDiv.value = latitude;
+                  lonDiv.value = longitude;
+                  //If Marker Has Been Set Remove It
+                  if (marker !== undefined) {
+                      mymap.removeLayer(marker)
+                  }
+                  // Add Clicked Location To Marker
+                  marker = L.marker([latDiv.value, lonDiv.value]).addTo(mymap);
+                  mymap.panTo(new L.LatLng(latDiv.value, lonDiv.value));
+              },
+              // On Fail
+              (e) => {
+                  alert('Sorry Failed To Locate You')
+              }
+          )
+      } else {
+          alert('Sorry! Your Browser Doesnt Support GeoLocation')
+      }
+  }
+
 </script>
 </body>
 </html>

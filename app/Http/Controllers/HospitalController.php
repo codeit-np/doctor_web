@@ -69,7 +69,7 @@ class HospitalController extends Controller
         $hospital->ward = $request->ward;
         $hospital->province = $request->province;
         $hospital->lat = $request->lat;
-        $hospital->lon = $request->lon;
+        $hospital->lon = $request->lng;
         $hospital->description = $request->description;
         $hospital->save();
         if($request->hasFile('images')){
@@ -121,6 +121,8 @@ class HospitalController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $data = $request->validate([
             'name' => 'required',
             'telephone'=> 'required',
@@ -131,8 +133,8 @@ class HospitalController extends Controller
             'ward'=> 'required',
             'province'=> 'required',
             'lat'=> 'required',
-            'lon'=> 'required',
-            'description'=> 'required'
+            'lng'=> 'required',
+            
         ]);
 
         $hospital = Hospital::find($id);
@@ -154,7 +156,7 @@ class HospitalController extends Controller
         $hospital->ward = $request->ward;
         $hospital->province = $request->province;
         $hospital->lat = $request->lat;
-        $hospital->lon = $request->lon;
+        $hospital->lon = $request->lng;
         $hospital->description = $request->description;
         $hospital->update();
         // We need to save product first so that we can get product ID for Product Image Table

@@ -30,6 +30,7 @@ class Doctorresource extends JsonResource
             'specialist' => $this->specialist->name,
             'mobile'=> $this->mobile,
             'description'=> $this->description,
+            'specialist'=> $this->specialist->name,
 
         ];
     }

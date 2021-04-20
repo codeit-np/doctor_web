@@ -19,8 +19,11 @@ class FavourateResource extends JsonResource
             "id" => $this->doctor->id,
              "name" => $this->doctor->name,
             "city" => $this->doctor->city,
+            "telephone" => $this->doctor->telephone,
             "mobile" => $this->doctor->mobile,
+            "ward" => $this->doctor->ward,
             "image" => $this->doctor->image,
+            
         ];
     }
 }
